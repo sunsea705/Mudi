@@ -15,7 +15,9 @@
 	<description>Projeto Spring MVC da Alura</description>
 
 	<properties>
-		<java.version>16</java.version>
+		<java.version>1.8</java.version>
+		<start-class>br.com.alura.mvc.mudi.MudiApplication</start-class>
+		<springframework.version>4.0.2.RELEASE</springframework.version>
 	</properties>
 
 	<dependencies>
