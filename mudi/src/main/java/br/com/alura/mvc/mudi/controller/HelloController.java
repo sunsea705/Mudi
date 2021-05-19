@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HelloController {
 	
 	/*
-	 * Pelo amor de deus, o nome do mapping, do método, da string de retorno
-	 * e o nome do arquivo .html tem que ser exatamente iguais senão dá erro*/
-	@GetMapping("/hello")
+	 * A string de retorno e o nome do arquivo .html tem que ser exatamente iguais senão dá erro*
+	 * Então sim, o endereço para acessar esse método pode ser diferente, conforme o exemplo aí embaixo.
+	 */
+	@GetMapping("/hell")
 	public String hello(Model model) {
 		model.addAttribute("capitulo", "Prologue I: ");
 		return "hello";
