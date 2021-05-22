@@ -17,12 +17,15 @@
 			color: white;
 		}
 		
+		
 	</style>
 </head>
 
 <div th:fragment="logo" class="logo-container mb-3 p-3 d-flex justify-content-between align-items-center">
-	<a class="logo mudi-link" href="/home" >mudi</a>
-	<a href="/login">login</a>
+	<a href="/home" class="logo mudi-link">mudi</a>
+	<a sec:authorize="!isAuthenticated()" class="mudi-link" href="/login">login</a>
+	<a sec:authorize="isAuthenticated()" class="mudi-link" onclick="document.querySelector('#form-login').submit()" >logout</a>
+	<form class="d-none" id="form-login" th:action="@{/logout}" method="POST"></form>
 </div>
 
 <div th:fragment="titulo(valor)" class="p-5 mb-4 bg-light rounded-3">

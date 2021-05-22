@@ -29,7 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .formLogin().loginPage("/login")
         .defaultSuccessUrl("/home")
         .usernameParameter("username")
-        .passwordParameter("password");
+        .passwordParameter("password")
+        .and()
+        .logout().logoutUrl("/logout");
 	}
 	
 	@Bean
