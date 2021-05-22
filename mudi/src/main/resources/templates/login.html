@@ -9,12 +9,12 @@
 				<form th:action="@{/login}" method="POST" class="card-body">
 					<div class="form-group mb-3">
 						<div class="mb-2">
-							<label for="username">Usuário</label>
-							<input name="username" class="form-control" placeholder="usuário"/>
+							<label for="username" class="sr-only">Usuário</label>
+							<input type="text" name="username" class="form-control" placeholder="usuário"/>
 						</div>
 						<div class="mb-2">
-							<label for="password">Senha</label>
-							<input type="password" name="username" class="form-control" placeholder="senha"/>
+							<label for="password" class="sr-only">Senha</label>
+							<input type="password" name="password" class="form-control" placeholder="senha"/>
 						</div>
 						<button class="btn btn-primary" type="submit">Login</button>
 					</div>					

@@ -12,37 +12,36 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
+@SuppressWarnings("deprecation")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests()
-        .antMatchers("/css/**", "/js/**")
-        .permitAll()
-        .and()
-        .authorizeRequests()
-        .anyRequest()
-        .authenticated()
-        .and()
-        .formLogin(
-                form -> form
-                        .loginPage("/login")
-                        .permitAll()
-        );
 		
+		http
+		.antMatcher("/**")
+        .authorizeRequests()
+        .antMatchers("/", "/login**","/callback/", "/webjars/**", "/css/**", "/error**")
+        .permitAll()
+        .anyRequest()
+        .fullyAuthenticated()
+        .and()
+        .formLogin().loginPage("/login")
+        .defaultSuccessUrl("/home")
+        .usernameParameter("username")
+        .passwordParameter("password");
 	}
 	
 	@Bean
 	@Override
-	protected UserDetailsService userDetailsService() {
-		UserDetails user =
-			 User.withDefaultPasswordEncoder()
+	protected UserDetailsService userDetailsService() {	 
+		System.out.println("AAA");
+		UserDetails user = User.withDefaultPasswordEncoder()
 				.username("root")
 				.password("root")
 				.roles("ADM")
 				.build();
-
+		System.out.println("bbb");
 		return new InMemoryUserDetailsManager(user);
 	}
 }
