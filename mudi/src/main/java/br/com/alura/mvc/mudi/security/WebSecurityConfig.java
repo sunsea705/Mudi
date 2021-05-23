@@ -21,19 +21,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http
+		.csrf().disable()
 		.antMatcher("/**")
         .authorizeRequests()
-        .antMatchers("/", "/login**","/callback/", "/webjars/**", "/css/**", "/error**")
+        .antMatchers("/", "/login**","/callback/", "/webjars/**", "/css/**", "/error**", "/home**")
         .permitAll()
         .anyRequest()
         .fullyAuthenticated()
         .and()
         .formLogin().loginPage("/login")
-        .defaultSuccessUrl("/home")
+        .defaultSuccessUrl("/usuario/pedido")
         .usernameParameter("username")
         .passwordParameter("password")
         .and()
-        .logout().logoutUrl("/logout");
+        .logout().logoutUrl("/logout")
+        .logoutSuccessUrl("/home");
 	}
 	
 	@Override

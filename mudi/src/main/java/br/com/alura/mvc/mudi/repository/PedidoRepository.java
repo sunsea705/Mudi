@@ -15,8 +15,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
 	List<Pedido> findByStatus(StatusPedido status);
 	
-	/*@Query(value = "SELECT p from Pedido p join p.user u where u.username = :username")
-	List<Pedido> findAllByUser(@Param("username") String username);*/
 	@Query(value = "SELECT * FROM pedido WHERE user_username = :username", nativeQuery = true)
 	List<Pedido> findAllByUser(String username);
 	
