@@ -1,4 +1,4 @@
-<!--  home de cada usu�rio -->
+<!--  home de cada usuário -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="~{base :: head}"></head>
@@ -17,16 +17,16 @@
 			</nav>
 			<div class="card mb-3" th:each="pedido : ${pedidos}">
 				
-				<th:block th:switch="${pedido.status.name()}" class="card-heder alert">
-					<div th:case="AGUARDANDO" class="alert-warning" th:text="${pedido.nomeProduto}">Nome do Produto</div>
-					<div th:case="APROVADO" class="alert-success" th:text="${pedido.nomeProduto}">Nome do Produto</div>
-					<div th:case="ENTREGUE" class="alert-dark" th:text="${pedido.nomeProduto}">Nome do Produto</div>
+				<th:block th:switch="${pedido.status.name()}" class="alert">
+					<div th:case="AGUARDANDO" class="card-header alert-warning" th:text="${pedido.nomeProduto}">Nome do Produto</div>
+					<div th:case="APROVADO" class="card-header alert-success" th:text="${pedido.nomeProduto}">Nome do Produto</div>
+					<div th:case="ENTREGUE" class="card-header alert-dark" th:text="${pedido.nomeProduto}">Nome do Produto</div>
 				</th:block>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-12 col-sm-8 mb-4">
 							<div class="row">
-								<div class="col-md-5">Valor: <spam th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado, 0, 'POINT', 2, 'COMMA')}"></spam> </div>
+								<div class="col-md-5">Valor: <spam th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado, 1, 'POINT', 2, 'COMMA')}"></spam> </div>
 								<div class="col-md-7">Data Entrega: <spam th:text="${#temporals.format(pedido.dataEntrega, 'dd/MM/yyyy')}"></spam> </div>
 							</div>
 							
@@ -35,7 +35,7 @@
 								
 							<div>Descrição</div>
 							<div>
-								<textarea disabled class="form-control" th:text="${pedido.descricao}">descrição do pedido</textarea>
+								<textarea disabled class="form-control" th:text="${pedido.descricao}">descriÃ§Ã£o do pedido</textarea>
 							</div>
 						</div>
 							
