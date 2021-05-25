@@ -13,7 +13,7 @@
 					<div class="row">
 						<div class="col-12 col-sm-8 mb-4">
 							<div class="row">
-								<div class="col-md-5">Valor: <spam th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado, 0, 'POINT', 2, 'COMMA')}"></spam> </div>
+								<div class="col-md-5">Valor: <spam th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado, 1, 'POINT', 2, 'COMMA')}"></spam> </div>
 								<div class="col-md-7">Data Entrega: <spam th:text="${#temporals.format(pedido.dataEntrega, 'dd/MM/yyyy')}"></spam> </div>
 							</div>
 							

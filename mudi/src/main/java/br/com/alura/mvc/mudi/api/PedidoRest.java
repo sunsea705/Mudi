@@ -16,16 +16,15 @@ import br.com.alura.mvc.mudi.repository.PedidoRepository;
 @RestController
 @RequestMapping("/api/pedidos")
 public class PedidoRest {
-	
+
 	@Autowired
-	private PedidoRepository  pedidoRepository;
-	
-	
+	private PedidoRepository pedidoRepository;
+
 	@GetMapping("aguardando")
-	public List<Pedido> getPedidoAgurdandoOfertas(){
+	public List<Pedido> getPedidoAgurdandoOfertas() {
 		Sort decrescente = Sort.by("id").descending();
 		PageRequest paginacao = PageRequest.of(0, 2, decrescente);
-		
+
 		return pedidoRepository.findByStatus(StatusPedido.AGUARDANDO, paginacao);
 	}
 
