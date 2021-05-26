@@ -12,7 +12,7 @@ public class RequisicaoNovaOferta {
 
 	private Long pedidoId;
 	private String valor;
-	private String dataDaEntrega;
+	private String dataEntrega;
 	private String comentario;
 
 	public Long getPedidoId() {
@@ -31,12 +31,12 @@ public class RequisicaoNovaOferta {
 		this.valor = valor;
 	}
 
-	public String getDataDaEntrega() {
-		return dataDaEntrega;
+	public String getDataEntrega() {
+		return dataEntrega;
 	}
 
-	public void setDataDaEntrega(String dataDaEntrega) {
-		this.dataDaEntrega = dataDaEntrega;
+	public void setDataEntrega(String dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
 
 	public String getComentario() {
@@ -50,7 +50,7 @@ public class RequisicaoNovaOferta {
 	public Oferta toOferta() {
 		Oferta oferta = new Oferta();
 		oferta.setComentario(this.comentario);
-		oferta.setDataDaEntrega(LocalDate.parse(this.dataDaEntrega, dateFormatter));
+		oferta.setDataEntrega(LocalDate.parse(this.dataEntrega, dateFormatter));
 		oferta.setValor(new BigDecimal(this.valor));
 		return oferta;
 	}

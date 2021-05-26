@@ -16,7 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Pedido {
 
@@ -30,6 +32,7 @@ public class Pedido {
 	private String urlProduto;
 	private String urlImagem;
 	private String descricao;
+	private String comentario;
 
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
@@ -39,19 +42,6 @@ public class Pedido {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
 	private List<Oferta> ofertas;
-
-	public Pedido() {
-	}
-
-	public Pedido(String nomeProduto, BigDecimal valorNegociado, String urlProduto, String urlImagem,
-			String descricao) {
-		this.nomeProduto = nomeProduto;
-		this.valorNegociado = valorNegociado;
-		this.dataEntrega = LocalDate.now();
-		this.urlProduto = urlProduto;
-		this.urlImagem = urlImagem;
-		this.descricao = descricao;
-	}
 
 	public Long getId() {
 		return id;
@@ -107,6 +97,14 @@ public class Pedido {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
 	public StatusPedido getStatus() {

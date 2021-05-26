@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Oferta {
 
@@ -19,11 +23,12 @@ public class Oferta {
 
 	private BigDecimal valor;
 
-	private LocalDate dataDaEntrega;
+	private LocalDate dataEntrega;
 
 	private String comentario;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Pedido pedido;
 
 	public Long getId() {
@@ -42,12 +47,12 @@ public class Oferta {
 		this.valor = valor;
 	}
 
-	public LocalDate getDataDaEntrega() {
-		return dataDaEntrega;
+	public LocalDate getDataEntrega() {
+		return dataEntrega;
 	}
 
-	public void setDataDaEntrega(LocalDate dataDaEntrega) {
-		this.dataDaEntrega = dataDaEntrega;
+	public void setDataEntrega(LocalDate dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
 
 	public String getComentario() {
